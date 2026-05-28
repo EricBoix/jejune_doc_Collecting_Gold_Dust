@@ -14,7 +14,6 @@ def main():
     pdf_filename = path.join(
         path.dirname(__file__),
         "..",
-        "..",
         "original_data",
         "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf",
     )

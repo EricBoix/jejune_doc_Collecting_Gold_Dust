@@ -80,7 +80,6 @@ def test_main_output_matches_reference():
     pdf_filename = path.join(
         path.dirname(__file__),
         "..",
-        "..",
         "original_data",
         "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf",
     )
@@ -98,7 +97,6 @@ def test_main_output_matches_reference():
     output = output_path.read_text()
     reference = (
         script_dir
-        / ".."
         / ".."
         / "result_data"
         / "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md"

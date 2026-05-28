@@ -15,15 +15,15 @@ COLLECTING GOLD DUST Nurturing the Dhamma in Daily Living](./original_data/2019_
 ## Running things
 
 ```bash
-cd `git rev-parse --show-toplevel`/Data/ISBN_978-0-9835844-5-2_-_Collecting_Gold_Dust/Convert/SelfMadePython
+cd `git rev-parse --show-toplevel`/Convert
 python3.10 -m venv venv
 source ./venv/bin/activate
-pip install -r ../../../requirements.txt
+pip install -r requirements.txt
 pip install git+https://github.com/EricBoix/pdf-to-markdown.git
 python main.py
 ```
 
-Also refer to [`data_production.py`](../../data_production.py) script for usage examples.
+Also refer to [`data_production.py`](./data_production.py) script for usage examples.
 
 ## Testing
 

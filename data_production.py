@@ -7,7 +7,7 @@ import shutil
 
 if __name__ == "__main__":
     this_script_dir = pathlib.Path(__file__).parent.resolve()
-    converter_dir = os.path.join(this_script_dir, "Convert/SelfMadePython")
+    converter_dir = os.path.join(this_script_dir, "Convert")
     venv_python_bin = os.path.join(converter_dir, "venv/bin/python")
 
     if not os.path.exists(venv_python_bin):
