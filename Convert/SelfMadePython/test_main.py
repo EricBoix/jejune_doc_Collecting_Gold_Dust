@@ -91,10 +91,11 @@ def test_main_output_matches_reference():
     )
     document = converter.get_document()
     # Generate the markdown file
-    document.to_markdown("output.md")
+    output_path = script_dir / "output.md"
+    document.to_markdown(str(output_path))
 
     # Compare output.md to reference
-    output = (script_dir / "output.md").read_text()
+    output = output_path.read_text()
     reference = (
         script_dir
         / ".."
