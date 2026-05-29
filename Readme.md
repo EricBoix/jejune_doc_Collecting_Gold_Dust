@@ -29,7 +29,7 @@ docker build -tjejuness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_
 docker run --rm jejuness:doc_Collecting_Gold_Dust --help
 ```
 
-Extracting the result out of the container required local filesystem mount
+Extracting the result out of the container requires local filesystem mount
 
 ```bash
 docker run --rm  -v `pwd`/junk:/output jejuness:doc_Collecting_Gold_Dust --output_directory /output 
