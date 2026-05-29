@@ -1,4 +1,7 @@
-from os import path
+import os
+import sys
+import shutil
+import argparse
 from Converter import Converter
 from StructuralInfo import StructuralInfo
 from pdf_to_markdown import (
@@ -9,10 +12,60 @@ from pdf_to_markdown import (
     set_debug_mode,
 )
 
+DEBUG = False
 
-def main():
-    pdf_filename = path.join(
-        path.dirname(__file__),
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description="Convert the Collecting Gold Dust book to markdown."
+    )
+    parser.add_argument(
+        "--output_directory",
+        type=str,
+        metavar="DIR",
+        help="Relative path to output directory (default is CWD).",
+    )
+
+    args = parser.parse_args()
+
+    return args
+
+
+def move_outputs_to_output_dir(output_dir):
+    # Move all relevant output files
+    input_dir = os.getcwd()
+    converted_markdown_source = os.path.join(input_dir, "output.md")
+
+    if not os.path.exists(converted_markdown_source):
+        print(
+            f"Converted markdown output file ({converted_markdown_source}) not found. Exiting."
+        )
+        sys.exit()
+
+    converted_markdown_target = os.path.join(
+        output_dir,
+        "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md",
+    )
+    shutil.move(converted_markdown_source, converted_markdown_target)
+    sentences_source = os.path.join(input_dir, "Sentences_as_LangChain_Document.json")
+    if not os.path.exists(sentences_source):
+        print(f"Sentences output file ({sentences_source}) not found. Exiting.")
+        sys.exit()
+
+    sentences_target = os.path.join(
+        output_dir,
+        "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json",
+    )
+    shutil.move(sentences_source, sentences_target)
+    if DEBUG:
+        print("Following files moved to output:")
+        print(f"  - {converted_markdown_target}")
+        print(f"  - {sentences_target}")
+
+
+def convert():
+    pdf_filename = os.path.join(
+        os.path.dirname(__file__),
         "..",
         "original_data",
         "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf",
@@ -45,4 +98,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    args = parse_arguments()
+    convert()
+    if args.output_directory:
+        move_outputs_to_output_dir(args.output_directory)

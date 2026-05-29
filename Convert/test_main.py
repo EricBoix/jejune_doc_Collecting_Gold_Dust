@@ -1,7 +1,6 @@
 """Test that converter output matches reference file."""
 
 from pathlib import Path
-from os import path
 import re
 
 
@@ -72,28 +71,13 @@ class TestChapterRegex:
 
 
 def test_main_output_matches_reference():
+    # Compare converter output with conversion validated reference
+    from main import convert
+
+    convert()
+
     script_dir = Path(__file__).parent
-
-    from Converter import Converter
-    from StructuralInfo import StructuralInfo
-
-    pdf_filename = path.join(
-        path.dirname(__file__),
-        "..",
-        "original_data",
-        "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf",
-    )
-
-    converter = Converter(
-        pdf_filename=pdf_filename,
-        structural_info=StructuralInfo(),
-    )
-    document = converter.get_document()
-    # Generate the markdown file
     output_path = script_dir / "output.md"
-    document.to_markdown(str(output_path))
-
-    # Compare output.md to reference
     output = output_path.read_text()
     reference = (
         script_dir
