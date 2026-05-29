@@ -11,6 +11,8 @@ WORKDIR jj_doc_Collecting_Gold_Dust.git/Convert
 RUN set -ex \
     && pip install -r requirements.txt
 
+RUN ls -al
+
 RUN set -ex \
     && pip install -r requirements-dev.txt \
     && pytest test_main.py
