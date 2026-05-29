@@ -19,5 +19,4 @@ RUN set -ex \
 
 COPY ./entrypoint.py ./
 
-ENTRYPOINT ["python3", "./entrypoint.py"]
-CMD ["--help"]
+ENTRYPOINT ["python3", "./main.py"]
