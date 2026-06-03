@@ -4,7 +4,8 @@
 
 - [Introduction](#introduction)
 - [Running the converter](#running-the-converter)
-- [Running with docker](#running-with-docker)
+- [Running the PDF conversion with docker](#running-the-pdf-conversion-with-docker)
+- [Running the full data workflow](#running-the-full-data-workflow)
 - [Development](#development)
 
 ## Introduction
@@ -22,7 +23,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Running with docker
+## Running the PDF conversion with docker
 
 ```bash
 docker build -tjejuness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_doc_Collecting_Gold_Dust.git#:DockerContext
@@ -33,6 +34,52 @@ Extracting the result out of the container requires local filesystem mount
 
 ```bash
 docker run --rm  -v `pwd`/junk:/output jejuness:doc_Collecting_Gold_Dust --output_directory /output 
+```
+
+## Running the full data workflow
+
+```bash
+### From original PDF to markdown and JSON
+docker build -tjejuness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_doc_Collecting_Gold_Dust.git#:DockerContext
+docker run --rm  -v `pwd`/result_data:/output jejuness:doc_Collecting_Gold_Dust --output_directory /output
+```
+
+```bash
+### Extracting knowledge graph
+# Launch a neo4j DB
+docker build -t jejuness:jj_neo4j_docker https://github.com/EricBoix/jj_neo4j_docker.git
+# Note: are we missing -e NEO4J_dbms_security_procedures_unrestricted: "apoc.*" \
+docker run --rm \
+    --publish=7474:7474 --publish=7687:7687 \
+    --env NEO4J_AUTH=neo4j/your_password \
+    -e NEO4J_apoc_export_file_enabled=true \
+    -e NEO4J_apoc_import_file_enabled=true \
+    -e NEO4J_apoc_import_file_use__neo4j__config=true \
+    -v `pwd`/result_data/database:/data \
+    jejuness:jj_neo4j_docker
+# Build and run the KG extraction
+docker build -t jejuness:jj_build_knowledge_graph https://github.com/EricBoix/jj_build_knowledge_graph.git#:DockerContext
+docker run --rm \
+  -v `pwd`/result_data:/data \
+  --env-file .env \
+  jejuness:jj_build_knowledge_graph extracting_graph_semantic_chuncker.py --input_directory /data \
+  --load_markdown_document result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md \
+  --load_json_document result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json
+```
+
+```bash
+### Dump the database content for later usage
+# Dumping requires the DB to be halted properly
+docker stop $(docker ps -q --filter ancestor=jejuness:jj_neo4j_docker )
+docker run --interactive --tty --rm  \
+    --volume=`pwd`/result_data:/data \
+    --volume=`pwd`/result_data/backups:/backups \
+    neo4j/neo4j-admin neo4j-admin database dump jejuness:jj_neo4j_docker --to-path=/backups 
+```
+
+```bash
+### Restart the database (out of previous dump) and extract knowledge graph FILE
+
 ```
 
 ## Development
