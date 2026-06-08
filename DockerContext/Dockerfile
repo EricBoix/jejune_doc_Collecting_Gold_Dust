@@ -8,7 +8,7 @@ RUN set -ex \
     # && cd jj_doc_Collecting_Gold_Dust.git \
     # && git checkout 444b50086c
 
-WORKDIR jj_doc_Collecting_Gold_Dust.git/Convert
+WORKDIR /jj_doc_Collecting_Gold_Dust.git/Convert
 RUN set -ex && pip install -r requirements.txt
 
 # Systematically run tests at build time (fail often, fail early)
