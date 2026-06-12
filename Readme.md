@@ -101,7 +101,6 @@ Run the (Knowledge Graph) extraction
 
 ```bash
 source jj_worflow_shell/treatments.sh   # Implicit from now on
-# Note: the documents are implicitly in <cwd>/original_data sub-directory
 extract_knowledge_graph $RESULTS_DIR '--load_markdown_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md  --load_json_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json'
 ```
 
