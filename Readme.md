@@ -1,4 +1,4 @@
-# Extracting the book semantic structure out of Collecting Gold Dust book<!-- omit from toc -->
+# Extracting some knowledge graph out of Collecting Gold Dust book<!-- omit from toc -->
 
 ## Table of contents<!-- omit from toc -->
 
@@ -11,7 +11,9 @@
 ## Introduction
 
 This directory holds a [copy of the pdf version of Sayadaw U Tejaniya's book
-COLLECTING GOLD DUST Nurturing the Dhamma in Daily Living](./original_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf) as offered e.g. by [this Scribd link](https://www.scribd.com/document/716383730/Collecting-Gold-Dust-Web-Book-1)
+COLLECTING GOLD DUST Nurturing the Dhamma in Daily Living](./original_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf) as offered e.g. by [this Scribd link](https://www.scribd.com/document/716383730/Collecting-Gold-Dust-Web-Book-1).
+
+![The main connected component of some extracted knowledge graph (as visualized with neo4j)](./Doc/main_connected_component_of_knowledge_graph_neo4j_visualization.png)
 
 ## Running the converter
 
@@ -38,6 +40,18 @@ docker run --rm  -v `pwd`/junk:/output jejuness:doc_Collecting_Gold_Dust --outpu
 
 ## Running the full data workflow
 
+Note: for a commented version of the following workflow refer e.g. to [the Four Noble Truth workflow](https://github.com/EricBoix/jj_doc_Four_Noble_Truths/blob/main/README.md#running-the-full-default-data-workflow).
+
+Setup and context clean-up
+
+```bash
+cd `git rev-parse --show-toplevel`         # Implicit from now on
+git clone https://github.com/EricBoix/jj_worflow_shell.git jj_shell_utils
+
+export RESULTS_DIR=`pwd`/result_data       # Syntactic sugar
+\rm -fr result_data/database
+```
+
 From original PDF to markdown and JSON
 
 ```bash
@@ -46,98 +60,77 @@ docker build -tjejuness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_
 docker run --rm  -v `pwd`/result_data:/output jejuness:doc_Collecting_Gold_Dust --output_directory /output
 ```
 
+Change the following neo4j database parameter values in order to suit your needs
+
+```bash
+export NEO4J_PORT=7687
+export NEO4J_USERNAME=neo4j
+export NEO4J_PASSWORD=your_password
+```
+
+The also adapt the following LLM server designation and credentials
+
+```bash
+LLM_MODEL_URL=https://ollama-ui.pagoda.liris.cnrs.fr/ollama/
+LLM_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+LLM_MODEL_NAME=llama3:70b
+```
+
+Transmitting (by file) servers info to upcoming treatment processes:
+
+```bash
+echo "# Neo4j server designation and associated credentials" > .env
+echo "NEO4J_URI=bolt://localhost:$NEO4J_PORT"                >> .env
+echo "NEO4J_USERNAME=$NEO4J_USERNAME"                        >> .env
+echo "NEO4J_PASSWORD=$NEO4J_PASSWORD"                        >> .env
+#
+echo "### LLM server designation and associate credential" >> .env
+echo "MODEL_URL=$LLM_MODEL_URL"                            >> .env
+echo "API_KEY=$LLM_API_KEY"                                >> .env
+echo "MODEL=$LLM_MODEL_NAME"                               >> .env
+```
+
 Prerequisite Knowledge Graph (KG) extraction: launch a neo4j database
 
 ```bash
-cd `git rev-parse --show-toplevel`
-docker build -t jejuness:jj_neo4j_docker https://github.com/EricBoix/jj_neo4j_docker.git
-# Note: are we missing -e NEO4J_dbms_security_procedures_unrestricted: "apoc.*" \
-docker run --rm --detach --name jj_neo4j_db \
-    --publish=7474:7474 --publish=7687:7687 \
-    --env NEO4J_AUTH=neo4j/your_password \
-    -e NEO4J_apoc_export_file_enabled=true \
-    -e NEO4J_apoc_import_file_enabled=true \
-    -e NEO4J_apoc_import_file_use__neo4j__config=true \
-    -v `pwd`/result_data/database:/data \
-    jejuness:jj_neo4j_docker
-# Transmitting required info to following DB process users
-echo "# Neo4j server designation and associated credentials" > .env
-echo "NEO4J_URI=bolt://localhost:7687"                       >> .env
-echo "NEO4J_USERNAME=neo4j"                                  >> .env
-echo "NEO4J_PASSWORD=your_password"                          >> .env
-```
-
-Configure the KG (Knowledge Graph) extraction
-
-```bash
-if [ ! -f .env ]; then
-  echo ".env file with DB info does not exist. Exiting."
-  return
-fi
-# Configuring the llm model to be used
-echo "### LLM server designation and associate credential"      >> .env
-echo "MODEL_URL=https://ollama-ui.pagoda.liris.cnrs.fr/ollama/" >> .env
-echo "API_KEY=sk-dde3f395ce1b4bfcb5c0d7f4c46b9c0c"              >> .env
-echo "MODEL=llama3:70b"                                         >> .env
+source jj_shell_utils/Neo4jDatabase.sh    # Implicit from now on
+launch_neo4j_db $RESULTS_DIR $NEO4J_PORT $NEO4J_USERNAME/$NEO4J_PASSWORD
 ```
 
 Run the (Knowledge Graph) extraction
 
 ```bash
-docker build -t jejuness:jj_build_knowledge_graph https://github.com/EricBoix/jj_build_knowledge_graph.git#:DockerContext
-docker run --rm --tty --name jj_build_knowledge_graph \
-  -v `pwd`/result_data:/data \
-  --env-file .env \
-  jejuness:jj_build_knowledge_graph extracting_graph_semantic_chuncker.py --input_directory /data \
-  --load_markdown_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md \
-  --load_json_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json
+source jj_shell_utils/treatments.sh   # Implicit from now on
+# Note: the documents are implicitly in <cwd>/original_data sub-directory
+extract_knowledge_graph $RESULTS_DIR '--load_markdown_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md  --load_json_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json'
 ```
 
-Dump the database content for later usage
+Dump the database content for later usage (optional)
 
 ```bash
-# Dumping requires the DB to be halted properly
-docker stop $(docker ps -q --filter ancestor=jejuness:jj_neo4j_docker )
-docker run --interactive --tty --rm  \
-    --volume=`pwd`/result_data/database:/data \
-    --volume=`pwd`/result_data/backups:/backups \
-    neo4j/neo4j-admin neo4j-admin database dump jejuness:jj_neo4j_docker --to-path=/backups
-mv result_data/backups/neo4j.dump result_data/backups/neo4j.CollectingGoldDust.MarkdownTextSplitterAndSentences.dump  
+dump_database $RESULTS_DIR neo4j.CollectingGoldDust.MarkdownTextSplitterAndSentences.dump
 ```
 
-Restart the database (out of previous dump)...
+In order to validate the dump, erase the database and restore it (out of the
+previous dump)...
 
 ```bash
-rm -fr result_data/database     # WARNING: this deletes all your databases !
-docker run --interactive --tty --rm \
-    --volume=`pwd`/result_data/database:/data \
-    --volume=`pwd`/result_data/backups:/backups \
-    neo4j/neo4j-admin neo4j-admin database load neo4j.CollectingGoldDust.MarkdownTextSplitterAndSentences --from-path=/backups
-
-# Neo4j launching command is identical as the one done above
-docker run --rm --detach --name jj_neo4j_db \
-    --publish=7474:7474 --publish=7687:7687 \
-    --env NEO4J_AUTH=neo4j/your_password \
-    -e NEO4J_apoc_export_file_enabled=true \
-    -e NEO4J_apoc_import_file_enabled=true \
-    -e NEO4J_apoc_import_file_use__neo4j__config=true \
-    -v `pwd`/result_data/database:/data \
-    jejuness:jj_neo4j_docker
+# WARNING: this DELETEs the existing database
+rm -fr $RESULTS_DIR/database     
+restore_database $RESULTS_DIR neo4j.CollectingGoldDust.MarkdownTextSplitterAndSentences.dump
+launch_neo4j_db $RESULTS_DIR $NEO4J_PORT $NEO4J_USERNAME/$NEO4J_PASSWORD
 ```
 
-Eventually, extract knowledge graph FILE
-
-
-WARNING: not tested yet
+Extract knowledge graph in [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)) format:
 
 ```bash
-docker build -t jejuness:jj_neo4j_to_rdf_ttl https://github.com/EricBoix/jj_neo4j_to_rdf_ttl.git#:DockerContext
-docker run --rm \
-  --network host \
-  -v `pwd`/result_data:/output \
-  --env-file .env \
-  jejuness:jj_neo4j_to_rdf_ttl \
-  neo4j_to_rdf.py /output/graph.ttl
+dump_knowledge_graph_in_turtle $RESULTS_DIR CollectingGoldDust.MarkdownTextSplitterAndSentences.ttl
+```
+
+Eventually turn the context off:
+
+```bash
+stop_neo4j_db
 ```
 
 ## Development
