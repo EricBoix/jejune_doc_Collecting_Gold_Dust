@@ -46,7 +46,7 @@ Setup and context clean-up
 
 ```bash
 cd `git rev-parse --show-toplevel`         # Implicit from now on
-git clone https://github.com/EricBoix/jj_worflow_shell.git
+git clone https://github.com/EricBoix/jj_workflow_shell.git
 
 export RESULTS_DIR=`pwd`/result_data       # Syntactic sugar
 \rm -fr result_data/database
@@ -93,14 +93,14 @@ echo "MODEL=$LLM_MODEL_NAME"                               >> .env
 Prerequisite Knowledge Graph (KG) extraction: launch a neo4j database
 
 ```bash
-source jj_worflow_shell/Neo4jDatabase.sh    # Implicit from now on
+source jj_workflow_shell/Neo4jDatabase.sh    # Implicit from now on
 launch_neo4j_db $RESULTS_DIR $NEO4J_PORT $NEO4J_USERNAME/$NEO4J_PASSWORD
 ```
 
 Run the (Knowledge Graph) extraction
 
 ```bash
-source jj_worflow_shell/treatments.sh   # Implicit from now on
+source jj_workflow_shell/treatments.sh   # Implicit from now on
 extract_knowledge_graph $RESULTS_DIR '--load_markdown_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md  --load_json_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json'
 ```
 
