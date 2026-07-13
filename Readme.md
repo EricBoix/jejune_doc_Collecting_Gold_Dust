@@ -28,14 +28,14 @@ python main.py
 ## Running the PDF conversion with docker
 
 ```bash
-docker build -tjejuness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_doc_Collecting_Gold_Dust.git#:DockerContext
-docker run --rm jejuness:doc_Collecting_Gold_Dust --help
+docker build -tjejuneness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_doc_Collecting_Gold_Dust.git#:DockerContext
+docker run --rm jejuneness:doc_Collecting_Gold_Dust --help
 ```
 
 Extracting the result out of the container requires local filesystem mount
 
 ```bash
-docker run --rm  -v `pwd`/junk:/output jejuness:doc_Collecting_Gold_Dust --output_directory /output
+docker run --rm  -v `pwd`/junk:/output jejuneness:doc_Collecting_Gold_Dust --output_directory /output
 ```
 
 ## Running the full data workflow
@@ -56,8 +56,8 @@ From original PDF to markdown and JSON
 
 ```bash
 cd `git rev-parse --show-toplevel`
-docker build -tjejuness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_doc_Collecting_Gold_Dust.git#:DockerContext
-docker run --rm  -v `pwd`/result_data:/output jejuness:doc_Collecting_Gold_Dust --output_directory /output
+docker build -tjejuneness:doc_Collecting_Gold_Dust https://github.com/EricBoix/jj_doc_Collecting_Gold_Dust.git#:DockerContext
+docker run --rm  -v `pwd`/result_data:/output jejuneness:doc_Collecting_Gold_Dust --output_directory /output
 ```
 
 Change the following neo4j database parameter values in order to suit your needs
