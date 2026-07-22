@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Running the converter](#running-the-converter)
 - [Running the PDF conversion with docker](#running-the-pdf-conversion-with-docker)
-- [Running the full data workflow](#running-the-full-data-workflow)
+- [Running the full data workflow with jejune\_cli](#running-the-full-data-workflow-with-jejune_cli)
 - [Development](#development)
 
 ## Introduction
@@ -38,7 +38,7 @@ Extracting the result out of the container requires local filesystem mount
 docker run --rm  -v `pwd`/junk:/output jejuneness:doc_Collecting_Gold_Dust --output_directory /output
 ```
 
-## Running the full data workflow
+## Running the full data workflow with jejune_cli
 
 Install and configure [`jejune_cli`](https://github.com/EricBoix/jejune_cli), then run `jejune doctor` to verify the configuration. This boils down to
 
