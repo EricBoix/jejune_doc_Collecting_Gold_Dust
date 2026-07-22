@@ -59,6 +59,7 @@ export RESULTS_DIR=`pwd`/result_data
 Run the converter to extract a markdown out of the original PDF :
 
 ```bash
+jejune convert build
 jejune convert run --output-dir $RESULTS_DIR
 ```
 
