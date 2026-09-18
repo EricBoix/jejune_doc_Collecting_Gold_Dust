@@ -25,6 +25,11 @@ def parse_arguments():
         metavar="DIR",
         help="Relative path to output directory (default is CWD).",
     )
+    parser.add_argument(
+        "--test",
+        action="store_true",
+        help="Run tests instead of converting.",
+    )
 
     args = parser.parse_args()
 
@@ -99,6 +104,13 @@ def convert():
 
 if __name__ == "__main__":
     args = parse_arguments()
+    if args.output_directory and not os.path.isdir(args.output_directory):
+        print(f"Output directory not found: {args.output_directory!r}")
+        sys.exit(1)
+    if args.test:
+        import subprocess
+        result = subprocess.run(["pytest", "test_main.py"])
+        sys.exit(result.returncode)
     convert()
     if args.output_directory:
         move_outputs_to_output_dir(args.output_directory)

@@ -11,9 +11,7 @@ RUN set -ex \
 WORKDIR /jejune_doc_Collecting_Gold_Dust.git/Convert
 RUN set -ex && pip install -r requirements.txt
 
-# Systematically run tests at build time (fail often, fail early)
-RUN set -ex \
-    && pip install -r requirements-dev.txt \
-    && pytest test_main.py
+# Prepare tools for running tests
+RUN set -ex && pip install -r requirements-dev.txt
 
 ENTRYPOINT ["python3", "./main.py"]
