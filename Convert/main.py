@@ -6,7 +6,6 @@ from Converter import Converter
 from StructuralInfo import StructuralInfo
 from pdf_to_markdown import (
     PrintDocument,
-    WriteAsLangchainDocuments,
     print_document_raw_pages,
     set_warning_mode,
     set_debug_mode,
