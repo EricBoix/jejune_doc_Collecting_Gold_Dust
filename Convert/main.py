@@ -52,20 +52,9 @@ def move_outputs_to_output_dir(output_dir):
         "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md",
     )
     shutil.move(converted_markdown_source, converted_markdown_target)
-    sentences_source = os.path.join(input_dir, "Sentences_as_LangChain_Document.json")
-    if not os.path.exists(sentences_source):
-        print(f"Sentences output file ({sentences_source}) not found. Exiting.")
-        sys.exit()
-
-    sentences_target = os.path.join(
-        output_dir,
-        "2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json",
-    )
-    shutil.move(sentences_source, sentences_target)
     if DEBUG:
-        print("Following files moved to output:")
+        print("Following file moved to output:")
         print(f"  - {converted_markdown_target}")
-        print(f"  - {sentences_target}")
 
 
 def convert():
@@ -94,12 +83,6 @@ def convert():
         PrintDocument(document).pages()
         PrintDocument(document).paragraphs()
         PrintDocument(document).sentences()
-
-    # For downstream Knowledge Graph extraction
-    if True:
-        WriteAsLangchainDocuments(document).write_sentences(
-            "Sentences_as_LangChain_Document.json"
-        )
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# Proper names
+### Proper names
 Ashin
 Bago
 Bhaddanta
@@ -18,13 +18,14 @@ Sheng
 Shwe
 Sukha
 Sunanda
-Thet
+Taalman
 Tawya
 Tejaniya
 Thet
 Vicks
 Zeng
-# Path related terms
+
+### Path related terms
 ājīvaṭṭhamaka
 ānāpānasati
 anatta
@@ -36,17 +37,21 @@ dukkha
 kamma
 kuti
 kutis
+Meditators
+meditators
 mettā
 Nibbāna
 paññā
 Pātimokkha
 Sādhu
-Satipaṭṭhāna
 samatha
+Satipaṭṭhāna
 sīla
 vedanā
 Vihāras
-## Pali terms
+vipassanā
+
+### Pali terms
 Arahato
 Bhagavato
 Dhammaṃ
@@ -56,14 +61,21 @@ moha
 Namo
 Pāḷi
 Sammā-Sambuddhassa
+samādhi
 saraṇaṃ
-# General terms
+
+### General terms
 dedicatedly
 jumpstart
 misbehaviors
 videogames
-# Ad-hoc/lingo/specific (non) terms
+
+### Ad-hoc/lingo/specific (non) terms
+pytest
+Scribd
 toplevel
+venv
+
 # Note: cspell ignores the following entries...
 info@wisdomstreams.org
 www.ashintejaniya.org
