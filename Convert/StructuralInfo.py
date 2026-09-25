@@ -166,6 +166,12 @@ class StructuralInfo(StructuralInfoBase):
             53: {"paragraph_fits_on_page": True},
             56: {"drop_page": True},  # Illustration with non meaningful text
             60: {"paragraph_fits_on_page": True},
+            61: {
+                "typo_and_fix": {  # PDF extraction artifact
+                    "typo": "GET TING",
+                    "fix": "GETTING",
+                }
+            },
             62: {"drop_page": True},  # Illustration with non meaningful text
             63: {"paragraph_fits_on_page": True},
             64: {"type": "illustration"},  # Illustration with valid text
@@ -181,6 +187,12 @@ class StructuralInfo(StructuralInfoBase):
             78: {"type": "illustration"},
             79: {"chapter_info": {"illumination_delimiter": "Dnot"}},
             80: {"paragraph_fits_on_page": True},
+            81: {
+                "typo_and_fix": {  # PDF extraction artifact
+                    "typo": "PAY AT TENTION",
+                    "fix": "PAY ATTENTION",
+                }
+            },
             82: {"drop_page": True},
             84: {"paragraph_fits_on_page": True},
             87: {"paragraph_fits_on_page": True},

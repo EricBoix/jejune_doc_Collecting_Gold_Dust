@@ -91,6 +91,7 @@ if __name__ == "__main__":
         sys.exit(1)
     if args.test:
         import subprocess
+
         result = subprocess.run(["pytest", "test_main.py"])
         sys.exit(result.returncode)
     convert()

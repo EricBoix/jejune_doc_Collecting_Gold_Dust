@@ -1,11 +1,11 @@
 {
-    "cSpell.customDictionaries": {
-        "gold-dust-words": {
+    "cSpell.dictionaryDefinitions": [
+        {
             "name": "collecting_gold_dust",
             "path": "${workspaceRoot}/collecting_gold_dust-words.txt",
             "description": "Words used for Collecting Gold Dust",
             "addWords": true
-        },
-        "collecting_gold_dust": true
-    }
+        }
+    ],
+    "cSpell.dictionaries": ["collecting_gold_dust"]
 }
