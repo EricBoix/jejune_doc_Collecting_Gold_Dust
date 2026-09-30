@@ -7,5 +7,5 @@ slug: collecting-gold-dust
 
 pdf_file: original_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1.pdf
 markdown_file: result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter.md
-sentences_file: result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json
-turtle_file: result_data/CollectingGoldDust.MarkdownTextSplitterAndSentences.ttl
+sentences_file: result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Sentences_as_LangChain_document.json
+turtle_file: result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences.llama3_70b.ttl
