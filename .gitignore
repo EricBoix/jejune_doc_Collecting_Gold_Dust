@@ -1,3 +1,7 @@
+llm_Paragraphs.log
+node_modules/
+package-lock.json
+package.json
 .env
 Sentences_as_LangChain_Document.json
 .jejune
