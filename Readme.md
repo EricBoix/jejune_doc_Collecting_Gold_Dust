@@ -151,14 +151,12 @@ jejune graph extract $RESULTS_DIR \
   --load_json_document \
     2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json
 jejune neo4j stats --simple
-jejune neo4j stop
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Sentences.dump
 ```
 
 Extract knowledge graph in [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)) format
 
 ```bash {"name":"jejune-cli-graph-convert-ttl-sentences"}
-jejune neo4j start $RESULTS_DIR
 jejune neo4j dump-turtle $RESULTS_DIR CollectingGoldDust.Sentences.ttl
 jejune neo4j stop
 ```
@@ -171,16 +169,12 @@ jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 ```
 
 ```bash {"name":"jejune-cli-graph-extract-paragraphs"}
-jejune graph extract $RESULTS_DIR \
-  --load_json_document \
-  2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Paragraphs_as_LangChain_document.json
+jejune graph extract $RESULTS_DIR   --load_json_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Paragraphs_as_LangChain_document.json > llm_Paragraphs.log 2>&1 &
 jejune neo4j stats --simple
-jejune neo4j stop
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Paragraphs.dump
 ```
 
 ```bash {"name":"jejune-cli-graph-convert-ttl-paragraphs"}
-jejune neo4j start $RESULTS_DIR
 jejune neo4j dump-turtle $RESULTS_DIR CollectingGoldDust.Paragraphs.ttl
 jejune neo4j stop
 ```
@@ -197,12 +191,10 @@ jejune graph extract $RESULTS_DIR \
   --load_json_document \
   2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Headers_as_LangChain_document.json
 jejune neo4j stats --simple
-jejune neo4j stop
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Headers.dump
 ```
 
 ```bash {"name":"jejune-cli-graph-convert-ttl-headers"}
-jejune neo4j start $RESULTS_DIR
 jejune neo4j dump-turtle $RESULTS_DIR CollectingGoldDust.Headers.ttl
 jejune neo4j stop
 ```
