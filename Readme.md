@@ -99,6 +99,13 @@ jejune configuration doc-steward init
 jejune doctor
 ```
 
+Install the [`jejune_chunk_splitters`](https://github.com/EricBoix/jejune_chunk_splitters)
+plugin (provides `jejune chunk-splitters split`):
+
+```bash {"name":"jejune-cli-plugin-install"}
+jejune plugin-packages install
+```
+
 ### Running the converter (with jejune_cli)
 
 Run the converter to extract a markdown out of the original PDF :
@@ -132,11 +139,13 @@ export RESULTS_DIR=`pwd`/result_data
 ```
 
 Prepare the graph extraction by generating the various chunks with the splitters
+(requires the [`jejune_chunk_splitters`](https://github.com/EricBoix/jejune_chunk_splitters)
+plugin — see setup above):
 
 ```bash {"name":"jejune-cli-splitters-run"}
-jejune graph split --splitter headers
-jejune graph split --splitter paragraphs
-jejune graph split --splitter sentences
+jejune chunk-splitters split --splitter headers
+jejune chunk-splitters split --splitter paragraphs
+jejune chunk-splitters split --splitter sentences
 ```
 
 ### Running Knowledge Graph extraction with a sentence granularity
@@ -149,7 +158,7 @@ jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 ```bash {"name":"jejune-cli-graph-extract-sentences"}
 jejune graph extract $RESULTS_DIR \
   --load_json_document \
-    2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences_as_LangChain_Document.json
+    2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Sentences_as_LangChain_document.json > llm_Sentences.log 2>&1 &
 jejune neo4j stats --simple
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Sentences.dump
 ```
@@ -189,7 +198,7 @@ jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 ```bash {"name":"jejune-cli-graph-extract-headers"}
 jejune graph extract $RESULTS_DIR \
   --load_json_document \
-  2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Headers_as_LangChain_document.json
+  2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Headers_as_LangChain_document.json > llm_Headers.log 2>&1 &
 jejune neo4j stats --simple
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Headers.dump
 ```
