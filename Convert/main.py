@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 import shutil
 import argparse
@@ -90,8 +91,6 @@ if __name__ == "__main__":
         print(f"Output directory not found: {args.output_directory!r}")
         sys.exit(1)
     if args.test:
-        import subprocess
-
         result = subprocess.run(["pytest", "test_main.py"])
         sys.exit(result.returncode)
     convert()
