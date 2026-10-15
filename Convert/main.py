@@ -8,8 +8,6 @@ from StructuralInfo import StructuralInfo
 from pdf_to_markdown import (
     PrintDocument,
     print_document_raw_pages,
-    set_warning_mode,
-    set_debug_mode,
 )
 
 DEBUG = False
@@ -68,8 +66,6 @@ def convert():
     if False:
         print_document_raw_pages(pdf_filename)
 
-    # set_warning_mode(True)
-    # set_debug_mode(True)
     converter = Converter(
         pdf_filename=pdf_filename,
         structural_info=StructuralInfo(),

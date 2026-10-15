@@ -1,11 +1,11 @@
-import sys
 import roman
 
 from pdf_to_markdown import (
     ConverterBase,
+    ConverterConfig,
+    ConverterError,
     SuperChapter,
     DocumentWithSubChapters,
-    WarnAndExit,
 )
 
 
@@ -14,13 +14,13 @@ class Converter(ConverterBase):
     Converter for Collecting Gold Dust book.
     """
 
-    def __init__(self, pdf_filename, structural_info):
+    def __init__(self, pdf_filename, structural_info, config: ConverterConfig | None = None):
         structural_info.set_page_header_callback(self.get_page_header)
         document = DocumentWithSubChapters(
             structural_info.book_title,
             publication_info=getattr(structural_info, "publication_info", None),
         )
-        ConverterBase.__init__(self, pdf_filename, document, structural_info)
+        ConverterBase.__init__(self, pdf_filename, document, structural_info, config)
 
     def break_document_into_chapters(self):
         return ConverterBase.break_document_into_chapters(self, SuperChapter)
@@ -67,9 +67,7 @@ class Converter(ConverterBase):
     def get_page_header(self, extracted_page):
         page_number = extracted_page.page_number
         if page_number < 0 or page_number > self.structural_info.total_page_number:
-            print("Page number is outside of book page numeration.")
-            print("Exiting")
-            sys.exit()
+            raise ConverterError(f"Page number {page_number} is outside of book page numeration.")
 
         # Pages explicitly flagged as headless, well, are headless:
         if self.structural_info._page_is_headless(page_number):
@@ -130,4 +128,4 @@ class Converter(ConverterBase):
                 # chapter name
                 return self.chapter_page_header(extracted_page)
 
-        WarnAndExit("Header for page number ", page_number, " is not defined")
+        raise ConverterError(f"Header for page number {page_number} is not defined")
