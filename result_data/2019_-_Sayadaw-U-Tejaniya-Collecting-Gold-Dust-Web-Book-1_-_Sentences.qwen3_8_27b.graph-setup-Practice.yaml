@@ -1,0 +1,46 @@
+#Graph setup written by kg_graph_viewer.
+#Node ids are prefixed names (see prefixes) or <full URIs>.
+#Only pinned nodes carry x, y coordinates.
+
+version: 1
+source:
+  kind: file
+  turtle_file: turtle
+prefixes:
+  ex: http://example.org/graph/
+nodeLabelMode: neoId
+hideIsolatedNodes: true
+highlightedNodeTypes: {}
+hiddenEdgeTypes: []
+nodes:
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_2949
+    pinned: true
+    x: -150
+    y: 36
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_2950
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_3403
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_836
+    pinned: true
+    x: -167
+    y: -317
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_2947
+    pinned: true
+    x: -163
+    y: -236
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_320
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_2594
+    pinned: true
+    x: -150
+    y: 127
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_540
+    pinned: true
+    x: -361
+    y: -55
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_26
+    pinned: true
+    x: -162
+    y: -139
+  - id: ex:node_4_df48226d_f0e3_4a30_8445_e9ed470c6f33_388
+    pinned: true
+    x: -159
+    y: -55

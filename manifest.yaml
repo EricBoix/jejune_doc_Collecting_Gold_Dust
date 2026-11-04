@@ -41,8 +41,12 @@ graph_extractions:
 
   - model_name:       qwen3_8_27b
     chunk_short_name: Sentences
-    chunk_file:       result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Headers_as_LangChain_document.json
+    chunk_file:       result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Sentences_as_LangChain_document.json
     turtle_file:      result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences.qwen3_8_27b.ttl
+    graph_setups:
+      - name:        Practice
+        description: Practice concepts close up
+        setup_file:  result_data/2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences.qwen3_8_27b.graph-setup-Practice.yaml
 
   - model_name:       qwen3_8_27b
     chunk_short_name: Paragraphs
