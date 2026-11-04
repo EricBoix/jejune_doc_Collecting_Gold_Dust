@@ -48,7 +48,12 @@ class Sanitizer:
             print("Exiting.")
             sys.exit()
         # Proceed with the removal of the header
-        header_less_page_text = re.sub(header_text, "", header_less_page_text)
+        # Only remove the header found at the very beginning of the page:
+        # an unanchored removal would also strip e.g. every "x" of the body
+        # when the header is the page number "x".
+        header_less_page_text = re.sub(
+            "^" + header_text, "", header_less_page_text, count=1
+        )
         # Eventually, remove some possibly leaving whitespaces
         header_less_page_text = header_less_page_text.lstrip()
         # Eventually update the extracted_page
@@ -119,8 +124,31 @@ class Sanitizer:
             delimiter_with_return, " " + corrected_snippet, illumination_part
         )
         # The second thing to do is to reinsert the illumination character
-        # within the text
-        illumination_part = delimiter[0] + illumination_part
+        # within the text. It belongs right before the first word of the
+        # paragraph, that is the first indented line. Note that this is not
+        # always the very beginning of the text: some chapters have a title
+        # line (e.g. "CAUSE AND EFFECT CHAIN") standing prior to the paragraph.
+        paragraph_start = re.search(r"^ +(?=\S)", illumination_part, re.MULTILINE)
+        if paragraph_start:
+            # The hand made indentation is dropped (it would be overwritten
+            # by the illumination drawing of the leading character)
+            title_part = illumination_part[: paragraph_start.start()]
+            paragraph_part = illumination_part[paragraph_start.end() :]
+        else:
+            title_part = ""
+            paragraph_part = illumination_part
+        # Eventually remove the occurrence (or the couple occurrences) of
+        # returns + whitespaces that were added to reserve some space for the
+        # illuminations on the second or third line of the text. Only the
+        # paragraph is concerned (the title, if any, must keep its own line).
+        # The following does work but goes too far...
+        paragraph_part = re.sub("(\n( *))", " ", paragraph_part)
+        # When the illumination character is a word on its own (e.g. "A
+        # remember") it must be separated from the first word of the paragraph
+        illumination_character = delimiter[0]
+        if corrected_snippet[:1].isspace():
+            illumination_character += " "
+        illumination_part = title_part + illumination_character + paragraph_part
         # The third fix consists in removing the hand made spacing of the
         # beginning of the text (that would be overwritten by the illumination
         # drawing of the leading character):
@@ -129,11 +157,6 @@ class Sanitizer:
             "",
             illumination_part,
         )
-        # Eventually remove the occurrence (or the couple occurrences) of
-        # returns + whitespaces that were added to reserve some space for the
-        # illuminations on the second or third line of the text.
-        # The following does work but goes too far...
-        illumination_part = re.sub("(\n( *))", " ", illumination_part)
 
         # Eventually update the extracted_page
         extracted_page.text = illumination_part + end_of_text

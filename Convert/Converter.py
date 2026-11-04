@@ -119,7 +119,9 @@ class Converter(ConverterBase):
                 return (
                     self.structural_info.book_title
                     + self.get_chapter_name(fake_extracted_page)
-                    + " ||"
+                    # The header is used as a regex: the pipes must be escaped
+                    # and the exact spacing of the pdf text must be matched.
+                    + r"\s*\| \| "
                     + logical_page_number
                     + logical_page_number
                 )

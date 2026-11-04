@@ -215,12 +215,3 @@ jejune neo4j stop
 ```
 
 ## Development/Issues
-
-### Code limitations/errors to be fixed
-
-- Some word get modified during extraction: within `output.md` look for
-
-  - the word `eperience` that was initially properly spelled in the sentence `discussing their experiences and discoveries`.
-  - the word `ecitement` that was initially properly spelled in the sentence `excitement calming down`
-
-- Some subchapters (quite a few actually) are erroneous. For example the original text doesn't have chapter named `A CAUSE AND EFFECT CHAIN` or `| |`...
