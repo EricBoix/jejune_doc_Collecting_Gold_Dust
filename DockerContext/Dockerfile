@@ -1,4 +1,4 @@
-FROM python:3.10-buster
+FROM python:3.15
 
 RUN set -ex \
     && git clone https://github.com/EricBoix/jejune_doc_Collecting_Gold_Dust.git \
@@ -9,9 +9,9 @@ RUN set -ex \
     # && git checkout 444b50086c
 
 WORKDIR /jejune_doc_Collecting_Gold_Dust.git/Convert
-RUN set -ex && pip install -r requirements.txt
+RUN set -ex && pip install uv
 
-# Prepare tools for running tests
-RUN set -ex && pip install -r requirements-dev.txt
+# Installs the locked dependencies, including the tools for running tests
+RUN set -ex && uv sync --frozen
 
-ENTRYPOINT ["python3", "./main.py"]
+ENTRYPOINT ["uv", "run", "--frozen", "main.py"]

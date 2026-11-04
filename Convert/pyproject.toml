@@ -1,0 +1,22 @@
+[project]
+name = "convert-collecting-gold-dust"
+version = "0.1.0"
+description = "Converts the pdf version of Collecting Gold Dust into markdown"
+requires-python = ">=3.15"
+dependencies = [
+    "pypdf>=5.6.0",
+    "roman>=5.0",
+    "pdf-to-markdown",
+]
+
+[dependency-groups]
+dev = [
+    "black",
+    "pytest",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+pdf-to-markdown = { git = "https://github.com/EricBoix/pdf-to-markdown.git" }

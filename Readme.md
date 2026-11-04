@@ -20,24 +20,21 @@ COLLECTING GOLD DUST Nurturing the Dhamma in Daily Living](./original_data/2019_
 
 ## Running the PDF converter with python
 
-### Virtual environment set up
+### Environment set up (with uv)
 
 ```bash {"name":"python-venv-install"}
 cd `git rev-parse --show-toplevel`/Convert
-python3.10 -m venv venv
-source ./venv/bin/activate
-pip install -r requirements.txt
-python main.py --help
+uv sync
+uv run main.py --help
 ```
 
 ### Running the converter
 
-Within the above running context (directory and installed virtual environment)
+Within the above running context (directory and synchronized environment)
 
 ```bash {"name":"python-venv-run","terminalRows":"5"}
 cd `git rev-parse --show-toplevel`/Convert
-source ./venv/bin/activate
-python main.py
+uv run main.py
 ```
 
 and the markdown default output should be placed in `output.md` file.
@@ -46,11 +43,10 @@ and the markdown default output should be placed in `output.md` file.
 
 ```bash {"name":"python-venv-test","terminalRows":"5"}
 cd `git rev-parse --show-toplevel`/Convert
-source ./venv/bin/activate
-pip install -r requirements-dev.txt
-python main.py --test
+uv sync --group dev
+uv run main.py --test
 # and with a more verbose output:
-pytest -vv test_main.py
+uv run pytest -vv test_main.py
 ```
 
 ### Developers: updating/overwriting the result_data contents
@@ -59,8 +55,7 @@ Once development has improved the resulting converted file, the following comman
 
 ```bash {"name":"python-venv-overwrite-reference","terminalRows":"5"}
 cd `git rev-parse --show-toplevel`/Convert
-source ./venv/bin/activate
-python main.py --output_directory ../result_data/
+uv run main.py --output_directory ../result_data/
 ```
 
 ## Running the PDF converter with docker
