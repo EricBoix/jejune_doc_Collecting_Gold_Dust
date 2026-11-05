@@ -37,10 +37,10 @@ dukkha
 kamma
 kuti
 kutis
-Meditators
 meditators
-mettā
+Meditators
 metta
+mettā
 Nibbāna
 paññā
 Pātimokkha
@@ -50,8 +50,8 @@ Satipaṭṭhāna
 sīla
 vedanā
 Vihāras
-vipassanā
 vipassana
+vipassanā
 
 ### Pali terms
 Arahato
@@ -61,10 +61,10 @@ gacchāmi
 lobha
 moha
 Namo
-Pāḷi
 Pali
-Sammā-Sambuddhassa
+Pāḷi
 samādhi
+Sammā-Sambuddhassa
 saraṇaṃ
 
 ### General terms
@@ -81,6 +81,7 @@ venv
 
 # Note: cspell ignores the following entries...
 info@wisdomstreams.org
+runme
 www.ashintejaniya.org
 www.dharmaseed.org
 www.wisdomstreams.org

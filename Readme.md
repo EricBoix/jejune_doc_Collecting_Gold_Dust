@@ -129,7 +129,7 @@ jejune convert run --test
 
 Define a convenience variable for the results directory:
 
-```bash {"name":"jejune-cli-env-setup","terminalRows":"1"}
+```bash {"name":"jejune-cli-env-setup","interactive":"false"}
 export RESULTS_DIR=`pwd`/result_data
 ```
 
@@ -145,7 +145,7 @@ jejune chunk-splitters split --splitter sentences
 
 ### Running Knowledge Graph extraction with a sentence granularity
 
-```bash {"name":"jejune-cli-neo4j-cleanup"}
+```bash {"name":"jejune-cli-neo4j-sentences-cleanup"}
 jejune neo4j delete $RESULTS_DIR    # Avoid collision with previous/other run
 jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 ```
@@ -154,6 +154,7 @@ jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 jejune graph extract $RESULTS_DIR \
   --load_json_document \
     2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Sentences_as_LangChain_document.json > llm_Sentences.log 2>&1 &
+wait    # Count and dump only once the extraction is finished
 jejune neo4j stats --simple
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Sentences.dump
 ```
@@ -161,31 +162,48 @@ jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Sentences.dump
 Extract knowledge graph in [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)) format
 
 ```bash {"name":"jejune-cli-graph-convert-ttl-sentences"}
-jejune neo4j dump-turtle $RESULTS_DIR CollectingGoldDust.Sentences.ttl
+jejune neo4j dump-turtle $RESULTS_DIR 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Sentences.ttl
 jejune neo4j stop
 ```
 
+Note: runme summary for all the above
+  
+  ```bash
+  runme run jejune-cli-neo4j-sentences-cleanup
+  runme run jejune-cli-graph-extract-sentences
+  runme run jejune-cli-graph-convert-ttl-sentences
+  ```
+
 ### Running Knowledge Graph extraction with a paragraph granularity
 
-```bash {"name":"jejune-cli-neo4j-cleanup"}
+```bash {"name":"jejune-cli-neo4j-cleanup-paragraphs"}
 jejune neo4j delete $RESULTS_DIR    # Avoid collision with previous/other run
 jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 ```
 
 ```bash {"name":"jejune-cli-graph-extract-paragraphs"}
 jejune graph extract $RESULTS_DIR   --load_json_document 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Paragraphs_as_LangChain_document.json > llm_Paragraphs.log 2>&1 &
+wait    # Count and dump only once the extraction is finished
 jejune neo4j stats --simple
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Paragraphs.dump
 ```
 
 ```bash {"name":"jejune-cli-graph-convert-ttl-paragraphs"}
-jejune neo4j dump-turtle $RESULTS_DIR CollectingGoldDust.Paragraphs.ttl
+jejune neo4j dump-turtle $RESULTS_DIR 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Paragraphs.ttl
 jejune neo4j stop
 ```
 
+Note: runme summary for all the above
+  
+  ```bash
+  runme run jejune-cli-neo4j-cleanup-paragraphs
+  runme run jejune-cli-graph-extract-paragraphs
+  runme run jejune-cli-graph-convert-ttl-paragraphs
+  ```
+
 ### Running Knowledge Graph extraction with a markdown header granularity
 
-```bash {"name":"jejune-cli-neo4j-cleanup"}
+```bash {"name":"jejune-cli-neo4j-header-cleanup"}
 jejune neo4j delete $RESULTS_DIR    # Avoid collision with previous/other run
 jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 ```
@@ -194,12 +212,13 @@ jejune neo4j stats --assert 0/0     # Just making sure deletion was effective
 jejune graph extract $RESULTS_DIR \
   --load_json_document \
   2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_local_converter_-_Headers_as_LangChain_document.json > llm_Headers.log 2>&1 &
+wait    # Count and dump only once the extraction is finished
 jejune neo4j stats --simple
 jejune neo4j dump $RESULTS_DIR neo4j.CollectingGoldDust.Headers.dump
 ```
 
 ```bash {"name":"jejune-cli-graph-convert-ttl-headers"}
-jejune neo4j dump-turtle $RESULTS_DIR CollectingGoldDust.Headers.ttl
+jejune neo4j dump-turtle $RESULTS_DIR 2019_-_Sayadaw-U-Tejaniya-Collecting-Gold-Dust-Web-Book-1_-_Headers.ttl
 jejune neo4j stop
 ```
 
