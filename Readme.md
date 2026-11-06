@@ -61,8 +61,8 @@ uv run main.py --output_directory ../result_data/
 ## Running the PDF converter with docker
 
 ```bash {"name":"docker-build-and-run"}
-docker build -t jejuneness:convert_Collecting_Gold_Dust https://github.com/EricBoix/jejune_doc_Collecting_Gold_Dust.git#:DockerContext
-docker run --rm jejuneness:convert_Collecting_Gold_Dust --help
+docker build -t jejune:convert_Collecting_Gold_Dust https://github.com/EricBoix/jejune_doc_Collecting_Gold_Dust.git#:DockerContext
+docker run --rm jejune:convert_Collecting_Gold_Dust --help
 ```
 
 Running the tests
@@ -74,7 +74,7 @@ docker run --rm jejune:convert_Collecting_Gold_Dust --test
 Extracting the result out of the container requires local filesystem mount
 
 ```bash {"name":"docker-run-output-extraction","terminalRows":"5"}
-docker run --rm  -v `pwd`/junk:/output jejuneness:convert_Collecting_Gold_Dust --output_directory /output
+docker run --rm  -v `pwd`/junk:/output jejune:convert_Collecting_Gold_Dust --output_directory /output
 ```
 
 and the result will be placed in a newly created `junk/` subdirectory.
