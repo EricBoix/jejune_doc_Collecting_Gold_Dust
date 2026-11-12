@@ -2,7 +2,6 @@ import roman
 
 from pdf_to_markdown import (
     ConverterBase,
-    ConverterConfig,
     ConverterError,
     SuperChapter,
     DocumentWithSubChapters,
@@ -14,13 +13,13 @@ class Converter(ConverterBase):
     Converter for Collecting Gold Dust book.
     """
 
-    def __init__(self, pdf_filename, structural_info, config: ConverterConfig | None = None):
+    def __init__(self, pdf_filename, structural_info):
         structural_info.set_page_header_callback(self.get_page_header)
         document = DocumentWithSubChapters(
             structural_info.book_title,
             publication_info=getattr(structural_info, "publication_info", None),
         )
-        ConverterBase.__init__(self, pdf_filename, document, structural_info, config)
+        ConverterBase.__init__(self, pdf_filename, document, structural_info)
 
     def break_document_into_chapters(self):
         return ConverterBase.break_document_into_chapters(self, SuperChapter)

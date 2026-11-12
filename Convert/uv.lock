@@ -159,13 +159,13 @@ wheels = [
 
 [[package]]
 name = "pdf-to-markdown"
-version = "0.1.0"
-source = { git = "https://github.com/EricBoix/pdf-to-markdown.git#5ba4c3b7e1e8710cf6334effdbe11fe8d22eb696" }
+version = "0.1.1.dev43+ge2b9e0a6a"
+source = { git = "https://github.com/EricBoix/pdf-to-markdown.git#e2b9e0a6a3ab7ff6d22706c0257362a29b8bda98" }
 dependencies = [
     { name = "mdutils" },
     { name = "nltk" },
     { name = "pypandoc" },
-    { name = "pypandoc-binary" },
+    { name = "pypandoc-binary", marker = "platform_machine != 'arm64' or sys_platform != 'darwin'" },
     { name = "pypdf" },
 ]
 
