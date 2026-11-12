@@ -1,0 +1,15 @@
+# Applies when jejune_cli hands this repository to `docker build` as the named
+# context jejune-doc (--local-documents): keeps host-only and heavy content out.
+.git
+.env
+.jejune
+.vscode
+.claude
+**/.venv
+**/venv
+**/__pycache__
+**/.pytest_cache
+result_data/backups
+result_data/database
+result_data/*.json
+result_data/*.ttl
