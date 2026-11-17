@@ -159,8 +159,8 @@ wheels = [
 
 [[package]]
 name = "pdf-to-markdown"
-version = "0.1.1.dev43+ge2b9e0a6a"
-source = { git = "https://github.com/EricBoix/pdf-to-markdown.git#e2b9e0a6a3ab7ff6d22706c0257362a29b8bda98" }
+version = "0.1.1.dev46+g7fe327e3d"
+source = { git = "https://github.com/EricBoix/pdf-to-markdown.git#7fe327e3d9c3add067b44108980a86f904bbf92c" }
 dependencies = [
     { name = "mdutils" },
     { name = "nltk" },
