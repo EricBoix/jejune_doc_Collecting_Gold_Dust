@@ -7,6 +7,7 @@ Ghosh
 Kaminer
 Kosalla
 Mahāthera
+Mahathera
 Mogok
 Moushumi
 Reardon
@@ -27,13 +28,17 @@ Zeng
 
 ### Path related terms
 ājīvaṭṭhamaka
+ajivatthamaka
 ānāpānasati
+anapanasati
 anatta
 anicca
 bala
 dana
+Dhammam
 dhammas
 dukkha
+gacchami
 kamma
 kuti
 kutis
@@ -42,14 +47,23 @@ Meditators
 metta
 mettā
 Nibbāna
+Nibbana
 paññā
 Pātimokkha
+Patimokkha
 Sādhu
 samatha
+Sambuddhassa
+Samma
+saranam
 Satipaṭṭhāna
+Satipatthana
 sīla
+sila
 vedanā
+vedana
 Vihāras
+Viharas
 vipassana
 vipassanā
 

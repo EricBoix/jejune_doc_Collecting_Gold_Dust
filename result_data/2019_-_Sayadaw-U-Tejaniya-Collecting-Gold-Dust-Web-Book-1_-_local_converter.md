@@ -27,7 +27,6 @@ it'll just be a burden.
 
 Create your world. It's a game called Master Mind.
 
-
 ## Acknowledgements
 
 My special gratitude goes to my teacher, the late Venerable Shwe Oo Min Sayadaw Bhaddanta Kosalla Mahathera, who taught me the Dhamma and right attitude for my spiritual development and meditation practice.
@@ -147,6 +146,7 @@ When I was younger, I went for long retreats of six to ten months at a time. My 
 When you return home, remember that you are there, at home. You should remain in the present moment there. The present moment is the only real thing. Stay where you are because the now is always now, there is no "after now." You're trying to have mindfulness in this mind and the only effort is to remember to be mindful in the present moment. Through everything in your life you are remembering to be mindful, remembering how to be mindful, and building and maintaining samadhi, or stability of the mind.
 
 You use the information that you have, combined with intelligence, logic, and reasoning to figure out how to practice correctly. Next, you learn how to keep these already developed insights alive. Finally, you figure out how to develop even deeper levels of insight.
+
 ### MEDITATING ALL THE TIME
 
 We must be walking on the Noble Eightfold Path of sila (moral conduct), samadhi (stability of mind), and panna (wisdom). This particular aspect of meditation, where you need to be practicing it all the time for it to be alive and beneficial becomes apparent to someone who practices continuously. We really need to be a close friend of the Dhamma in order to grow in the Dhamma. It is when we are in such close communion with the Dhamma that we can grow in it. Otherwise, there is not much growth. How can the Dhamma grow in us if we are not always living the Dhamma?
@@ -241,10 +241,10 @@ Sometimes meditators are under the impression that they must practice in a speci
 
 You are learning how meditation operates.
 
-
 ## Take a Closer Look
 
 My teacher constantly reminded me that all the problems in the world originate from the trio of lobha, dosa, and moha. Keep an eye on them. Watching and keeping these unwholesome qualities at bay will allow the wholesome qualities to arise automatically.
+
 ### THE SPECTRUM OF WANTING
 
 When there are lots of pleasant physical sensations, we may become greedy for more. Watch this greed while continuing to keep an eye on awareness as much as possible. When the wanting is very subtle and not detectable, you are at least still able to recognize the presence of awareness. With an awareness of awareness, it is harder for the mind to get lost in the pleasant sensations. Additionally, having to work at being continuously aware makes it harder for greed to wallow in the feeling.
@@ -309,7 +309,6 @@ Wisdom increases faith; anyone who understands the value of mindfulness and has 
 
 goes out; when there is more fire, the burning continues.
 
-
 ## Reflect. Learn. Keep Going.<!-- markdownlint-disable-line MD026 -->
 
 Daily life will be full of ups and downs when greed, anger, delusion, and all their relatives come on strong. The wisdom you've got may not be sufficient enough to stop them. How do you approach such a situation? The first step is to accept whatever is happening in the mind as it is. Accept that this is just the nature of the mind. Unless you accept, you will be fighting defilements with defilements. I draw the analogy of trying to accelerate a car with one foot on the brakes! The car won't move.
@@ -321,6 +320,7 @@ While something is happening, awareness will continue to collect data little by 
 What kind of understanding can you glean from what is happening? You can start by being interested. Then investigate. You will become aware of many different things but be mindful that these are just objects or experiences. Begin to ask more questions: What is a concept? What is reality? Continue to watch and learn.
 
 Cultivate curiosity and interest--they are important ingredients. Don't be afraid of making mistakes, and never feel bad about having made a mistake. These false steps are the stepping-stones on our path and a part of our progress. We cannot avoid making them. Becoming aware of, carefully looking at, and learning from mistakes is wisdom at work! As we learn from our mistakes, wisdom will start coming in more naturally, more automatically. Over the years, as our practice progresses, as we become more and more mindful, the knowledge and understanding we have accumulated will naturally come in more quickly. Wisdom and mindfulness will start working as a team.
+
 ### PAY ATTENTION TO SKILL AND RIGHT EFFORT
 
 The dhamma encompasses everything. All the good and all the bad are all nature. You may only want the good and not the bad but that's impossible to have. You will have negative reactions. When there is insufficient understanding into phenomena or the wrong attitude towards an experience, you will have a negative reaction and you can't stop that. Just know that a reaction is happening. Know it and understand it, but don't try and stop it. Everything will fall into place once there is understanding. Wisdom will know how to balance, do what needs to be done and drop the unnecessary bits. Don't force something to happen. This goes against nature. While you can't get something just because you want it or you work for it, there are two things that will move us forward: how much you do and how skillful you are. Pay attention to applying skill and right effort-- these pieces deserve your attention. Meditation is not like the lottery; you don't pay a little and win a huge windfall.
@@ -359,7 +359,6 @@ If you want to improve, you first work continuously without a break. You also us
 
 got to be savvy and learn from your practice.
 
-
 ## Day-to-Day
 
 When you are aware of what's happening in the mind, you begin to notice the undesirable parts and will want to change. This is a beginning. The lessons are all there for you to go through and learn. Later on, if you really come to understand that something that is wrong is wrong, you will not repeat it again.
@@ -375,6 +374,7 @@ This is what my teacher, Shwe Oo Min Sayadaw would say as his instructions. In t
 What is happening in the mind and what is happening in the body right now? How is one mind or mental state related to another mental state? You want to be interested in the nature of this mind and body. Hold concepts or story lines on the side for now. As wisdom gains traction and defilements eventually thin out, you'll see that there aren't that many problems per se. "Problems" arise when there is a lot of greed, aversion or delusion present. When we can't accept things as they are, we exhaust ourselves with desire for things that are not present or with desire to push away things that are already there.
 
 The mind seeks variety, novelty and freshness and becomes lazy or bored when it's not satiated. If we think that a certain experience is lingering longer than we'd like, we're not observing properly. No two moments are the same. Every moment is fresh and every moment is changing. Even if an experience may seem neutral, we can still see subtle changes.
+
 ### DOING WHAT SHOULD BE DONE
 
 Yogis usually know about the Five Precepts and Eight Precepts so I do not need to tell them to you. If there is always mindfulness, you will automatically follow the Five Precepts. We must have some idea about what the Five Precepts entail in order to maintain them. It's important to have that kind of knowledge already, but I'm not the sort of person who wants to impose requirements on people. If you merely follow my instructions without conducting your own investigation, wisdom won't arise in you. You need to learn to the point where you personally understand why you need to act in certain ways.
@@ -549,7 +549,6 @@ We are not patient with gentle awareness; we do not believe it will work or trus
 
 it will grow into something.
 
-
 ## A Lighter Approach
 
 When I began to meditate in earnest at home, my awareness was inconsistent. I over-compensated for this spotty awareness by putting in a lot more personal effort. I wanted to be as mindful as possible but I was just too tired to do any more than that. Even then, there was only so much I could do. After some time, I began to notice a lighter, general, but discontinuous awareness that, done day after day, formed a pattern of long-term practice. The momentum that came out of general awareness created these dots that came together to form a tsunami of awareness that could be seen clearly.
@@ -559,6 +558,7 @@ We do not believe gentle awareness will work or trust that it will grow into som
 The idea of figuratively looking lightly out of the corner of your eye describes a kind of awareness that watches the workings of the mind in its receiving state. The mind becomes aware of all the objects that match this mental frequency. Alternatively, when we turn and pay attention solely on the objects, and make too much effort to see these objects, it will feel like the objects have disappeared because the observer and observed are no longer at the same frequency. We can use an analogy with the optometrist here. When you go to the optometrist, they might have you try out different power lenses to determine what would work for you. When the power is right for you, then you see the letters clearly. When the optometrist tries out a power that is too low or high, the letters on the chart become blurry. It's the same deal with the mind that is at the right frequency with objects. While you may assume that putting in more personal effort will yield better results, you may still not be able to see clearly.
 
 A light, general awareness allows us to continue functioning, to do the activities we need to do while a light recognition of what is happening works steadily in the background. This very gentle awareness, while not continuous in the beginning, will eventually gain momentum. When it becomes a natural, continuous awareness, it will really feel like you're aware and you'll feel like you're living this awareness in everything that you're doing. For me, it was at this point that I really understood the true nature of vipassana meditation and began to believe that it is possible to become enlightened while living life.
+
 ### USING WISDOM
 
 Meditators often forget to use their natural wisdom when they meditate at home because they haven't practiced using it. Investigate and use your wisdom to check in on whether awareness is present and how much effort is being used instead of blindly putting in more effort. Here are some considerations: Can you see your level of effort? Is there stability of mind? Do you know what that experience is like? Do you know your level of confidence or faith? Is wisdom at work? Meditators can normally recognize when there is awareness. However, fewer meditators can recognize wisdom at work.
@@ -606,7 +606,6 @@ lifetime commitment, not part-time work. It is something that we really need to 
 Only when we see the nature of the mind
 
 will we understand the nature of dhamma.
-
 
 ## Continuing the Work
 
@@ -659,7 +658,6 @@ The real benefit of the Dhamma is not to stop engaging with life issues but to a
 May All Beings Be Happy!
 
 Everybody has wholesome and unwholesome qualities in the mind but learning to cultivate the wholesome qualities is meditation. How do we cultivate these good qualities?
-
 
 ## Appendix: Mindfulness in Brief
 
