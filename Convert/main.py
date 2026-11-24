@@ -24,6 +24,14 @@ def parse_arguments():
         help="Relative path to output directory (default is CWD).",
     )
     parser.add_argument(
+        "--maximum_line_length",
+        type=int,
+        metavar="N",
+        default=None,
+        help="Break paragraph lines longer than N characters (no new paragraph "
+        "is introduced). 0 disables breaking (default: the converter's own value).",
+    )
+    parser.add_argument(
         "--test",
         action="store_true",
         help="Run tests instead of converting.",
@@ -55,7 +63,7 @@ def move_outputs_to_output_dir(output_dir):
         print(f"  - {converted_markdown_target}")
 
 
-def convert():
+def convert(maximum_line_length=None):
     pdf_filename = os.path.join(
         os.path.dirname(__file__),
         "..",
@@ -69,6 +77,7 @@ def convert():
     converter = Converter(
         pdf_filename=pdf_filename,
         structural_info=StructuralInfo(),
+        maximum_line_length=maximum_line_length,
     )
     document = converter.get_document()
     # Generate the markdown file
@@ -89,6 +98,6 @@ if __name__ == "__main__":
     if args.test:
         result = subprocess.run(["pytest", "test_main.py"])
         sys.exit(result.returncode)
-    convert()
+    convert(args.maximum_line_length)
     if args.output_directory:
         move_outputs_to_output_dir(args.output_directory)

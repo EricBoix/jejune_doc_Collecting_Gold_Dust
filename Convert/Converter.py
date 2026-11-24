@@ -13,13 +13,21 @@ class Converter(ConverterBase):
     Converter for Collecting Gold Dust book.
     """
 
-    def __init__(self, pdf_filename, structural_info):
+    # Lines of paragraphs longer than this are broken (markdownlint MD013),
+    # without starting new paragraphs.
+    DEFAULT_MAXIMUM_LINE_LENGTH = 800
+
+    def __init__(self, pdf_filename, structural_info, maximum_line_length=None):
         structural_info.set_page_header_callback(self.get_page_header)
+        if maximum_line_length is None:
+            maximum_line_length = self.DEFAULT_MAXIMUM_LINE_LENGTH
         document = DocumentWithSubChapters(
             structural_info.book_title,
             publication_info=getattr(structural_info, "publication_info", None),
         )
-        ConverterBase.__init__(self, pdf_filename, document, structural_info)
+        ConverterBase.__init__(
+            self, pdf_filename, document, structural_info, maximum_line_length
+        )
 
     def break_document_into_chapters(self):
         return ConverterBase.break_document_into_chapters(self, SuperChapter)
