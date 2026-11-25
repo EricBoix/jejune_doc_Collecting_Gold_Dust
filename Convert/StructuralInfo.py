@@ -59,7 +59,9 @@ class StructuralInfo(StructuralInfoBase):
         def __init__(self):
             # Refer to comments of test class TestChapterRegex within
             # test_main.py for explanations
-            chapter_name_characters = r"[A-Z|?|’| \u201c\u201d,]{3,100}"
+            # (The text of the pages is plain ASCII, see TextExtractor: a double quote
+            # stands for the opening and the closing ones)
+            chapter_name_characters = "[A-Z|?|'| \",]{3,100}"
             multi_lines_chapter_name = (
                 r"(?:"
                 + chapter_name_characters
