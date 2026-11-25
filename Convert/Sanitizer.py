@@ -5,10 +5,9 @@ import re
 class Sanitizer:
     """Sanitizer for Collecting Gold Dust book."""
 
-    def __init__(self, structural_info, get_page_header):
+    def __init__(self, structural_info):
         self.structural_info = structural_info
         self.chapter_splitter = structural_info.get_chapter_splitter()
-        self.get_page_header = get_page_header
 
     def sanitize_page_text(self, extracted_page):
         """
@@ -26,7 +25,7 @@ class Sanitizer:
 
         header_less_page_text = extracted_page.text
         # Make sure the exact header text is encountered
-        header_text = self.get_page_header(extracted_page)
+        header_text = self.structural_info.get_page_header(extracted_page)
         if not re.match("^" + header_text, header_less_page_text):
             print(
                 "Header <<",
