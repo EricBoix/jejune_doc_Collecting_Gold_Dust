@@ -20,6 +20,7 @@ class StructuralInfo(StructuralInfoBase):
     # The structural information per se with extension specifics
     # - "type" can be "illustration" (with an optional "header" boolean flag)
     # - a "chapter_info" can have an optional "illumination_delimiter"
+    EXTRA_PAGE_INFO_KEYS = frozenset({"header"})
 
     class chapter_splitter(ChapterSplitter):
         """Chapter splitter for Collecting Gold Dust.
