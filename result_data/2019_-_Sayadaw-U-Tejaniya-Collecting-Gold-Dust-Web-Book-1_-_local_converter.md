@@ -792,12 +792,6 @@ Sometimes we miss the fact that wisdom is there and doing its work because we ar
 <!-- page reader=113 pdf=130 -->
 What has brought it on? What does it feel like? Instead meditators react negatively to sleepiness. They will try different tactics to fix the sleepiness instead of seeing it as it is and learning more about it. I see this playing out in the dhamma hall during sitting sessions. Some meditator starts falling asleep and the expression on his face shows that he is unhappy with himself as he picks himself up. Blindly continuing these actions could just form bad habits.
 
-<!-- page reader=112 pdf=129 -->
-
-If sitting meditation makes you sleepy, sometimes being active can be good.
-
-<!-- page reader=113 pdf=130 -->
-
 If sitting meditation makes you sleepy, sometimes being active can be good. If you give the mind work to do, if it is being actively aware, then it will be alert and awake because it is doing something. You can also try sitting with your eyes open.
 
 We need to use wisdom the way we use our intelligence to solve problems, grow our businesses or think through what needs to be done at home and at work. In daily life, we figure out how to do things, consult with the right people and strategize to make a profit. We need to recognize the presence of wisdom and apply similar skills to meditation. PROBLEM-SOLVING FOR YOURSELF I often circulate around the Dhamma Hall of the Shwe Oo Min Meditation Center in the afternoons. There was a nun who sat right up front and I would see that her face would turn pink, over and over again.
@@ -999,12 +993,6 @@ Finally, let's discuss talking. We should try to practice right speech and only 
 There are many things that can happen while you are talking. If you are triggered when you are talking to someone, the fact that you are triggered but are still there, with the person, might trigger other emotions like embarrassment or agitation. While the mind may still be agitated, at the very least, you can still be aware.
 <!-- page reader=141 pdf=158 -->
 The purpose of mindfulness of speech is not to have a perfectly wise response, but to have a mindful conversation. You may have lost your balance in that time but what you need to know is that mindfulness is present through it all. If you are strongly attached to ideas, there will be triggers when someone else presents a conflicting idea. It's like North and South Korea being at war, separated by ideology. You can learn some lessons from these conversations when there is mindfulness. Whenever we say something wrong, we will suffer a little bit but if mindfulness stays with us, we will always learn.
-
-<!-- page reader=140 pdf=157 -->
-
-If you are strongly attached to ideas, there will be triggers when someone else presents a conflicting idea.
-
-<!-- page reader=141 pdf=158 -->
 
 Be a little extra careful at home. It is so much more interesting at home when mindfulness is always present, and especially when we bring mindfulness to daily life situations. In your talking to others you learn to see others' intentions and learn to speak in a way that helps you to manage yourself and manage the conversation as well. We begin to know what we are going to say before we say it and eventually have time to choose the skillful path.
 

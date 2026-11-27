@@ -23,6 +23,18 @@ class StructuralInfo(StructuralInfoBase):
     # - a "chapter_info" can have an optional "illumination_delimiter"
     EXTRA_PAGE_INFO_KEYS = frozenset({"header"})
 
+    # The typographic rules of this book (see pdf-to-markdown, docs/). Declared
+    # by the behaviour of the converter before the rules existed: the evidence
+    # for this book is still to be gathered.
+    valid_rules = frozenset(
+        {
+            "LowercaseTailContinues",
+            "UnpunctuatedHeadContinues",
+            "CompleteHeadUppercaseTailStartsParagraph",
+            "ReadingOrderIsLineOrder",
+        }
+    )
+
     class chapter_splitter(ChapterSplitter):
         """Chapter splitter for Collecting Gold Dust.
 
@@ -225,7 +237,13 @@ class StructuralInfo(StructuralInfoBase):
                 "chapter_info": {"illumination_delimiter": "Wawareness"},
                 "paragraph_fits_on_page": True,
             },
-            128: {"type": "illustration"},
+            128: {
+                # The text of this illustration is a quote that the body of
+                # the next page repeats. It stands inside a paragraph cut by
+                # the page break: kept, it would follow the text of the next
+                # page. We can thus drop it without content loss.
+                "drop_page": True,
+            },
             132: {"paragraph_fits_on_page": True},
             133: {
                 "type": "illustration",
@@ -256,7 +274,11 @@ class StructuralInfo(StructuralInfoBase):
             152: {"paragraph_fits_on_page": True},
             153: {"paragraph_fits_on_page": True},
             154: {"paragraph_fits_on_page": True},
-            156: {"type": "illustration"},
+            156: {
+                # Same as page 128: the quote of this illustration is
+                # repeated by the paragraph that the page break cuts.
+                "drop_page": True,
+            },
             157: {"paragraph_fits_on_page": True},
             158: {
                 "type": "chapter",
@@ -340,7 +362,9 @@ class StructuralInfo(StructuralInfoBase):
     def get_page_header(self, extracted_page):
         page_number = extracted_page.page_number
         if page_number < 0 or page_number > self.total_page_number:
-            raise ConverterError(f"Page number {page_number} is outside of book page numeration.")
+            raise ConverterError(
+                f"Page number {page_number} is outside of book page numeration."
+            )
 
         # Pages explicitly flagged as headless, well, are headless:
         if self._page_is_headless(page_number):
